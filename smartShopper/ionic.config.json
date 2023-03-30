@@ -1,0 +1,7 @@
+{
+  "name": "smartShopper",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
