@@ -1,0 +1,35 @@
+<ion-menu  style="--ion-background-color:#F0F1F3" side="start" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item >
+          <ion-icon style="color: #F3AE97A3" name="person-outline"></ion-icon> &nbsp; Account
+        </ion-item>
+        <ion-item >
+          <ion-icon style="color: #F3AE97A3" name="log-out-outline"></ion-icon> &nbsp; Logout
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>
+
+<ion-tabs style="--ion-background-color:#F0F1F3">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tab1">
+      <ion-icon  aria-hidden="true" name="home-outline"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab2">
+      <ion-icon aria-hidden="true" name="heart-circle-outline"></ion-icon>
+      <ion-label>WishList</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

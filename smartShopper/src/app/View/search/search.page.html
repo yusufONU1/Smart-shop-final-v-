@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #F3AE97A3" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchTerm"(ionInput)="search()"
+      debounce="500"
+      color="light"
+      placeholder="Enter keyword..."
+    >
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">search</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let item of searchResults">
+        <ion-card>
+          <ion-thumbnail>
+          <ion-img src="{{ item.logo }}" alt=" My Image" ></ion-img>
+          </ion-thumbnail>
+          <ion-card-content>
+            <h4>{{item.supermarket}}</h4>
+            <ion-card-title>{{ item.name }}</ion-card-title>
+            <ion-card-subtitle>{{ item.price | currency: "EUR" }}</ion-card-subtitle>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
