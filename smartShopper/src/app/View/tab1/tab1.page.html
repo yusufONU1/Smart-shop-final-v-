@@ -1,9 +1,6 @@
 <ion-header [translucent]="true">
 
     <ion-buttons slot="start">
-<!--      <ion-button routerLink="/menu">-->
-<!--        <ion-icon style="color: #F3AE97A3" name="menu-outline" slot="icon-only"></ion-icon>-->
-<!--      </ion-button>-->
       <ion-menu-button style="color: #F3AE97A3"></ion-menu-button>
       <ion-button class="search"
                   routerLink="/search">
@@ -22,49 +19,27 @@
 
 <ion-content scrollY="true" [fullscreen]="true">
   <h1 class="promotion">Promotions</h1>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://www.aldi.nl/aanbiedingen.html">
-            <img src="https://www.aldi.nl/etc/designs/aldi/web/frontend/aldi/images/favicons/favicon-192x192.png.res/1638343053228/favicon-192x192.png" alt="Image 1" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://www.spar.nl/aanbiedingen/">
-            <img src="https://www.spar.nl/Content/img/favicon/android-icon-192x192.png" alt="Image 2" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://www.dirk.nl/aanbiedingen">
-            <img src="https://d3r3h30p75xj6a.cloudfront.net/static-images/dirk/web/app_icon.png" alt="Image 3" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://www.janlinders.nl/aanbiedingen">
-            <img src="https://www.janlinders.nl/tl_files/images/Persberichten/JL_web_logo_700x200_wk10-2015.jpg" alt="Image 4" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://example.com">
-            <img src="https://via.placeholder.com/250x100.png" alt="Image 5" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <a href="https://example.com">
-            <img src="https://via.placeholder.com/250x100.png" alt="Image 6" height="100" width="350">
-          </a>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<!--  <ion-label class="filter">Filter:</ion-label>-->
+  <ion-select (ionChange)="onServiceChange($event)" label="Filter:" class="filter">
+    <ion-select-option value="s1">Dirk</ion-select-option>
+    <ion-select-option value="s2">Spar</ion-select-option>
+    <ion-select-option value="s3">AH</ion-select-option>
+  </ion-select>
+
+
+    <ion-list>
+      <ion-item *ngFor="let product of products">
+        <ion-thumbnail slot="start">
+          <img [src]="product.image" alt="my image">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{product.name}}</h2>
+          <p>{{product.newprice | currency: "EUR"}}</p>
+          <p class="oldPrice">{{product.oldprice | currency: "EUR"}}</p>
+        </ion-label>
+        <ion-button slot="end" [href]="product.link" target="_blank">View site</ion-button>
+      </ion-item>
+
+    </ion-list>
 
 </ion-content>

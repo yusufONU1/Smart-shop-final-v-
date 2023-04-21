@@ -28,13 +28,24 @@ ion-title{
   color: #FFFFFF;
 
 }
+
+.filter{
+  padding-left: 15px;
+  padding-right: 20px;
+  font-family: 'Abhaya Libre ExtraBold';
+
+
+}
 .promotion{
   padding-left: 15px;
   font-family: 'Abhaya Libre ExtraBold';
 
 
 }
-
+.oldPrice{
+  text-decoration: line-through;
+  transform: skew(-15deg);
+}
 .menu-outline{
   display: flex;
   flex-direction: row;
