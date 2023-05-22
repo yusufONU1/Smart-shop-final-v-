@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {Supermarket} from "../models/supermarket";
-// import {BrowserModule} from "@angular/platform-browser";
-
+import {RouterLink, RouterOutlet, Routes} from "@angular/router";
+import{Tab2Page}from '../../tab2/tab2.page'
 
 // This is the controller in the MVC pattern, responsible for managing the logic and state of the view.
 @Component({
@@ -13,15 +13,18 @@ import {Supermarket} from "../models/supermarket";
   templateUrl: '../view/search.page.html',
   styleUrls: ['../view/search.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule]
+  imports: [IonicModule, CommonModule, FormsModule, HttpClientModule, RouterLink, RouterOutlet,Tab2Page]
 
 })
+
 export class SearchPage implements OnInit {
   searchTerm = ''; // The user's search term
   supermarkets: Supermarket[] = []; // The list of supermarkets loaded from the API
   searchResults: any[] = []; // The list of search results to display in the view
 
+  wishlist: any[] = []
 
+  wishlistItemCount: number = 0;
   constructor(private http: HttpClient) {
     this.loadSupermarkets();
   }
@@ -34,7 +37,9 @@ export class SearchPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateWishlistItemCount();
+  }
 
   // Searches for products matching the user's search term and populates the searchResults array.
   search() {
@@ -62,5 +67,22 @@ export class SearchPage implements OnInit {
     }
     this.searchResults.sort((a, b) => a.price - b.price);
   }
+  addToWishlist(item: any) {
+    // Check if item already exists in wishlist
+    if (this.wishlist.find(wishlistItem => wishlistItem.id === item.id)) {
+      return;
+    }
+    // Add item to wishlist
 
+    console.log('Adding item to wishlist:', item);
+    this.wishlist.push(item);
+    this.updateWishlistItemCount();
+
+    // Save updated wishlist to localStorage
+    localStorage.setItem('wishlist', JSON.stringify(this.wishlist));
+
+  }
+  updateWishlistItemCount() {
+    this.wishlistItemCount = this.wishlist.length;
+  }
 }

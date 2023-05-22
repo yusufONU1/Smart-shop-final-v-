@@ -34,7 +34,7 @@
         </ion-thumbnail>
         <ion-label>
           <h2>{{product.name}}</h2>
-          <p>{{product.newprice | currency: "EUR"}}</p>
+          <p>€{{product.newprice.includes('.') ? product.newprice : '0.' + product.newprice}}</p>
           <p class="oldPrice">{{product.oldprice | currency: "EUR"}}</p>
         </ion-label>
         <ion-button slot="end" [href]="product.link" target="_blank">View site</ion-button>

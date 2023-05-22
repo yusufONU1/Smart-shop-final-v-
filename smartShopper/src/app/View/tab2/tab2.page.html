@@ -1,17 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #F3AE97A3" defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>
-      Tab 2
+      Wishlist
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of wishlist">
+      <ion-item>
+        <ion-checkbox slot="start" [(ngModel)]="item.checked"></ion-checkbox>
+        <ion-thumbnail slot="start">
+          <ion-img src="{{ item.logo }}"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.name }}</h2>
+          <h3>{{ item.supermarket }}</h3>
+          <p>{{ item.price | currency: 'EUR' }}</p>
+          <ion-button slot="end"fill="clear"(click)="removeFromWishlist(item)">
+            <ion-icon name="trash" color="danger" ></ion-icon>
+          </ion-button>
+        </ion-label>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

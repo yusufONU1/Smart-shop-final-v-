@@ -33,9 +33,19 @@
             <h4>{{item.supermarket}}</h4>
             <ion-card-title>{{ item.name }}</ion-card-title>
             <ion-card-subtitle>{{ item.price | currency: "EUR" }}</ion-card-subtitle>
+            <ion-button fill="clear" slot="end"  (click)="addToWishlist(item)">
+              <ion-icon name="star-outline" style="color: #F3AE97A3"></ion-icon>
+            </ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <div class="round-button">
+    <ion-button  shape="round" color="secondary" size="large" href="/tab2" >
+      <ion-icon name="heart-circle-outline"></ion-icon>
+      <div class="wishlist-count" *ngIf="wishlistItemCount > 0">{{ wishlistItemCount }}</div>
+    </ion-button>
+  </div>
 </ion-content>
+<router-outlet></router-outlet>

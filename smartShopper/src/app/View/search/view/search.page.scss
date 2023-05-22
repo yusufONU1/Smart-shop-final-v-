@@ -20,3 +20,20 @@ h3 {
   color: #666;
   margin: 0;
 }
+.round-button {
+  //background-color: #F3AE97A3;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 9999;
+}
+.wishlist-count {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
